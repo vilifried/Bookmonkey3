@@ -1,12 +1,6 @@
-<!-- viewState = property app.component-->
-<!-- showDetailsEvent = @output property book-list.component an app.component-->
-<bm-book-list
-        *ngIf="viewState==='list'"
-        (showDetailsEvent)="showDetails($event)"></bm-book-list>
-<!-- showListEvent = @output property book-detail.component-->
-<bm-book-detail
-        *ngIf="viewState ==='details'"
-        (showListEvent)="showList()"
-        [book]="book"></bm-book-detail>
+<div class="ui menu">
+    <a routerLink="home"  routerLinkActive="active" class="item">Home</a>
+    <a routerLink="books" routerLinkActive="active" class="item">Bücher</a>
+</div>
 <router-outlet></router-outlet>
 
