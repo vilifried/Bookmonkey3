@@ -10,7 +10,8 @@ import {catchError, map, retry} from "rxjs/operators";
     providedIn: 'root'
 })
 export class BookStoreService {
-    private api = 'https://api3.angular-buch.com/secure';
+    private api = 'https://api3.angular-buch.com/secure' +
+        '';
 
     constructor(private http: HttpClient) {
     }
@@ -51,6 +52,16 @@ export class BookStoreService {
         return this.http.delete(
             `${this.api}/book/${isbn}`,
             {responseType: 'text'}
+        ).pipe(
+            catchError(this.errorHandler)
+        );
+    }
+
+    create(book: Book): Observable<any> {
+        return this.http.post(
+            `${this.api}/book`,
+            book,
+            { responseType: 'text' }
         ).pipe(
             catchError(this.errorHandler)
         );
