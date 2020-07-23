@@ -10,10 +10,9 @@ import {BookStoreService} from '../shared/book-store.service';
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.css']
 })
-
 export class SearchComponent implements OnInit {
 
-    keyUp$ = new Subject<String>();
+    keyUp$ = new Subject<string>();
     isLoading = false;
     foundBooks: Book[] = [];
 
