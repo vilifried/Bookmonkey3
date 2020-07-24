@@ -10,6 +10,7 @@ import {SearchComponent} from './search/search.component';
 import {TokenInterceptor} from './shared/token-interceptor';
 import {BooksModule} from './books/books.module';
 import {AdminModule} from './admin/admin.module';
+import {BrowserModule} from '@angular/platform-browser';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import {AdminModule} from './admin/admin.module';
         SearchComponent
     ],
     imports: [
+        BrowserModule,
         CommonModule,
         HttpClientModule,
         AppRoutingModule,
