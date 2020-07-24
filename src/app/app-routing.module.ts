@@ -1,10 +1,7 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
+
 import {HomeComponent} from './home/home.component';
-import {BookListComponent} from './books/book-list/book-list.component';
-import {BookDetailComponent} from './books/book-detail/book-detail.component';
-import {CreateBookComponent} from './admin/create-book/create-book.component';
-import {EditBookComponent} from './admin/edit-book/edit-book.component';
 
 export const routes: Routes = [
     {
@@ -18,29 +15,19 @@ export const routes: Routes = [
     },
     {
         path: 'books',
-        component: BookListComponent
-    },
-    {
-        path: 'books/:isbn',
-        component: BookDetailComponent
+        loadChildren: () => import('src/app/books/books.module').then(m => m.BooksModule)
     },
     {
         path: 'admin',
-        redirectTo: 'admin/create',
-        pathMatch: 'full'
-    },
-    {
-        path: 'admin/create',
-        component: CreateBookComponent
-    },
-    {
-        path: 'admin/edit/:isbn',
-        component: EditBookComponent
+        loadChildren: () => import('src/app/admin/admin.module').then(m => m.AdminModule)
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(
+        routes,
+        {preloadingStrategy: PreloadAllModules}
+    )],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

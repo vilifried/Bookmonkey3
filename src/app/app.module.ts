@@ -22,9 +22,7 @@ import {BrowserModule} from '@angular/platform-browser';
         BrowserModule,
         CommonModule,
         HttpClientModule,
-        AppRoutingModule,
-        BooksModule,
-        AdminModule
+        AppRoutingModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

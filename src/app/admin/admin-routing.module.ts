@@ -1,21 +1,21 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import {EditBookComponent} from './edit-book/edit-book.component';
-import {CreateBookComponent} from './create-book/create-book.component';
+import { CreateBookComponent } from './create-book/create-book.component';
+import { EditBookComponent } from './edit-book/edit-book.component';
 
 const routes: Routes = [
     {
-        path: 'admin',
-        redirectTo: 'admin/create',
+        path: '',
+        redirectTo: 'create',
         pathMatch: 'full'
     },
     {
-        path: 'admin/create',
+        path: 'create',
         component: CreateBookComponent
     },
     {
-        path: 'admin/edit/:isbn',
+        path: 'edit/:isbn',
         component: EditBookComponent
     }
 ];
@@ -25,5 +25,4 @@ const routes: Routes = [
     exports: [RouterModule],
     providers: []
 })
-export class AdminRoutingModule {
-}
+export class AdminRoutingModule { }
