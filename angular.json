@@ -121,5 +121,8 @@
       }
     }
   },
-  "defaultProject": "Bookmonkey"
+  "defaultProject": "Bookmonkey",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

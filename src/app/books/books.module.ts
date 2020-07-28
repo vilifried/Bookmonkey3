@@ -8,11 +8,17 @@ import {IsbnPipe} from './shared/isbn.pipe';
 import {ZoomDirective} from './shared/zoom.directive';
 import {BookListComponent} from './book-list/book-list.component';
 import {BookListItemComponent} from './book-list-item/book-list-item.component';
+import {StoreModule} from '@ngrx/store';
+import * as fromBook from './reducers/book.reducer';
+import {EffectsModule} from '@ngrx/effects';
+import {BookEffects} from './effects/book.effects';
 
 @NgModule({
     imports: [
         CommonModule,
-        BooksRoutingModule
+        BooksRoutingModule,
+        StoreModule.forFeature('book', fromBook.reducer),
+        EffectsModule.forFeature([BookEffects])
     ],
     declarations: [
         BookListComponent,

@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
 import {HomeComponent} from './home/home.component';
 
-export const routes: Routes = [
+const routes: Routes = [
     {
         path: '',
         redirectTo: 'home',
@@ -15,19 +15,16 @@ export const routes: Routes = [
     },
     {
         path: 'books',
-        loadChildren: () => import('src/app/books/books.module').then(m => m.BooksModule)
+        loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
     },
     {
         path: 'admin',
-        loadChildren: () => import('src/app/admin/admin.module').then(m => m.AdminModule)
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(
-        routes,
-        {preloadingStrategy: PreloadAllModules}
-    )],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
 export class AppRoutingModule {
